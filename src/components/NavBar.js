@@ -5,7 +5,7 @@ import navIcon1 from '../assets/img/nav-icon1.svg'
 import navIcon2 from '../assets/img/nav-icon2.svg'
 import navIcon3 from '../assets/img/nav-icon3.svg'
 
-export const NavBar = () => {
+export const NavBar = ({ setCurrentComponent }) => {
     const [activeLink, setActiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
 
@@ -25,12 +25,13 @@ export const NavBar = () => {
 
     const onUpdateActiveLink = (value) => {
         setActiveLink(value);
+        setCurrentComponent(value);
     }
 
     return (
     <Navbar expand="lg" className={scrolled ? "scrolled": ""}>
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="#home" onClick={() => onUpdateActiveLink('home')}>
             <img src={logo} alt="Logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
@@ -49,7 +50,7 @@ export const NavBar = () => {
                 <a href="facebook"><img src={navIcon2} alt="" /></a>
                 <a href="instagram"><img src={navIcon3} alt="" /></a>
             </div>
-            <button className="vvd" onClick={() => console.log('connect')}><span>Let's Connect</span></button>
+            <button className="vvd" onClick={() => onUpdateActiveLink('contact')}><span>Let's Connect</span></button>
           </span>
         </Navbar.Collapse>
       </Container>

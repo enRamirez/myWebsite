@@ -3,7 +3,7 @@ import {Container, Row, Col} from 'react-bootstrap'
 import { ArrowRightCircle } from 'react-bootstrap-icons'
 import headerImg from '../assets/img/Profile.jpg'
 
-export const Banner = () => {
+export const Banner = ({ setCurrentComponent }) => {
     const [loopNum, setLoopNum] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const toRotate = ['Web Developer', 'Web Designer', 'UI/UX Designer'];
@@ -38,7 +38,11 @@ export const Banner = () => {
             setLoopNum(loopNum + 1);
             setDelta(500);
         }
-    }
+    };
+
+    const navigateToContact = () => {
+        setCurrentComponent('contact');
+    };
 
     return (
         <section className="banner" id="home">
@@ -47,10 +51,10 @@ export const Banner = () => {
                     <Col xs={12} md={6} xl={7}>
                         <span className="tagline">Welcome to my Website</span>
                         <h1>{`Hi I'm webcoded `}<span className="wrap">{text}</span></h1>
-                        <p>aioduhflakneiuazghfkvfjbakdjfhaoihdfkjandfiuabdifnapuerfgkajfoifaj;ldkjflkand9fuahedf</p>
-                        <button onClick={() => console.log('connect')}>Let's Connect <ArrowRightCircle size={25} /></button>
+                        <p>About Me</p>
+                        <button onClick={navigateToContact}>Let's Connect <ArrowRightCircle size={25} /></button>
                     </Col>
-                    <Col xs={12} md={6} xl={5}>
+                    <Col xs={12} md={6} xl={3}>
                         <img src={headerImg} alt='Header Img' />
                     </Col>
                 </Row>
